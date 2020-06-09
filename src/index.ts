@@ -4,7 +4,7 @@ import { Container } from "./container";
 import MarkdownIt from "markdown-it";
 import { IMDAlertsOptions } from "./types";
 
-export const alerts_plugin = (md: MarkdownIt, options: IMDAlertsOptions) => {
+export default function (md: MarkdownIt, options: IMDAlertsOptions) {
 	var containerOpenCount = 0;
 	var links = options ? options.links : true;
 	init();
@@ -54,4 +54,4 @@ export const alerts_plugin = (md: MarkdownIt, options: IMDAlertsOptions) => {
 			setupLinks();
 		}
 	}
-};
+}
