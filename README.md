@@ -1,6 +1,6 @@
-# Markdown-IT Alerts
+# Markdown-it Alert
 
-Markdown Alerts plugin to be able to create alert, success and tip messages in your Markdown code.
+Markdown-it Alert plugin to be able to create alert, success and tip messages in your Markdown code.
 
 Compatible with Bootstrap alerts.
 
