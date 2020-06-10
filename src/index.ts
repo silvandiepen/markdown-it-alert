@@ -48,7 +48,9 @@ export default function (md: MarkdownIt, options: IMDAlertsOptions) {
 		setupContainer("success");
 		setupContainer("info");
 		setupContainer("warning");
+		setupContainer("error");
 		setupContainer("danger");
+		setupContainer("tip");
 
 		if (links) {
 			setupLinks();
