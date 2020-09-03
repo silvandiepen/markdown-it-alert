@@ -14,9 +14,9 @@ Use plugin;
 
 ```js
 import md from "markdown-it";
-import alerts from "markdown-it-alert";
+import alert from "markdown-it-alert";
 
-md().use(alerts);
+md().use(alert);
 ```
 
 ### Options
@@ -28,7 +28,7 @@ You can use any type of alert you want, proposed is to use the same type for eve
 Links enables the usage of links within your messages. By default this is turned on but can be disabled by;
 
 ```js
-md().use(alerts, { links: false });
+md().use(alert, { links: false });
 ```
 
 #### BEM
@@ -36,7 +36,49 @@ md().use(alerts, { links: false });
 By default the class styles are compatible with bootstrap (`alert alert-success`), but you can also use the BEM syntax (`alert alert--success`).
 
 ```js
-md().use(alerts, { bem: true });
+md().use(alert, { bem: true });
+```
+
+#### role
+
+A role is always given by default but can be disabled'
+
+```js
+md().use(alert, { role: false });
+```
+
+#### tag
+
+The default element is a `div` but this can be changed by adding a tag to the config
+
+```js
+md().use(alert, { tag: "span" });
+```
+
+#### Types
+
+All alerts with the following types will be caught and created.
+
+- info
+- warning
+- error
+- danger
+- tip
+- success
+
+This list can be changed by giving your own values as an array;
+
+```js
+md().use(alert, { types: ["my", "own", "values"] });
+```
+
+Now you can use:
+
+```
+::: own
+Custom alerts
+:::
+
 ```
 
 ### Syntax

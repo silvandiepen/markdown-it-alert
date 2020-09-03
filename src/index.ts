@@ -6,8 +6,16 @@ import { IMDAlertsOptions } from "./types";
 
 export default function (md: MarkdownIt, options: IMDAlertsOptions) {
 	var containerOpenCount = 0;
-	var links = options ? options.links : true;
-	init();
+	const links: boolean = options && options.links ? options.links : true;
+	const bem: boolean = options && options.bem ? options.bem : false;
+	const role: boolean = options && options.role ? options.role : true;
+	const tag: string = options && options.tag ? options.tag : "div";
+	const alertTypes: string[] =
+		options && options.types
+			? options.types
+			: ["info", "warning", "error", "danger", "tip", "success"];
+
+	init(alertTypes);
 	return;
 
 	function setupContainer(name: string) {
@@ -15,13 +23,15 @@ export default function (md: MarkdownIt, options: IMDAlertsOptions) {
 			render: function (tokens, idx) {
 				if (tokens[idx].nesting === 1) {
 					containerOpenCount += 1;
-					const classes = options.bem
+
+					const roleHtml = role ? `role="alert"` : ``;
+					const classHtml = bem
 						? `alert alert--${name}`
 						: `alert alert-${name}`;
-					return `<div class="${classes}" role="alert">\n`;
+					return `<${tag} class="${classHtml}" ${roleHtml}>\n`;
 				} else {
 					containerOpenCount -= 1;
-					return "</div>\n";
+					return `</${tag}>\n`;
 				}
 			},
 		});
@@ -39,22 +49,17 @@ export default function (md: MarkdownIt, options: IMDAlertsOptions) {
 		var defaultRender = md.renderer.rules.link_open || selfRender;
 
 		md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+			const alertClass = bem ? `alert--link` : `alert-link`;
 			if (isContainerOpen()) {
-				tokens[idx].attrPush(["class", "alert-link"]);
+				tokens[idx].attrPush(["class", alertClass]);
 			}
 
 			return defaultRender(tokens, idx, options, env, self);
 		};
 	}
 
-	function init() {
-		setupContainer("success");
-		setupContainer("info");
-		setupContainer("warning");
-		setupContainer("error");
-		setupContainer("danger");
-		setupContainer("tip");
-
+	function init(alertTypes: string[]) {
+		alertTypes.forEach((el) => setupContainer(el));
 		if (links) {
 			setupLinks();
 		}

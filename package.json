@@ -5,7 +5,7 @@
 	"main": "dist/index.js",
 	"scripts": {
 		"build": "tsc",
-		"test": "test"
+		"test": "npm run build && jest --verbose"
 	},
 	"repository": {
 		"type": "git",
@@ -28,5 +28,10 @@
 		"markdown-it": "^11.0.0",
 		"punycode": "^2.1.1",
 		"typescript": "^3.9.5"
+	},
+	"dependencies": {
+		"@types/jest": "^26.0.13",
+		"jest": "^26.4.2",
+		"ts-jest": "^26.3.0"
 	}
 }

@@ -1,6 +1,9 @@
 export interface IMDAlertsOptions {
 	links: boolean;
 	bem?: boolean;
+	tag?: string;
+	role?: boolean;
+	types?: string[];
 }
 export interface IMDContainerOptions {
 	marker?: string;
