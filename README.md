@@ -31,6 +31,14 @@ Links enables the usage of links within your messages. By default this is turned
 md().use(alerts, { links: false });
 ```
 
+#### BEM
+
+By default the class styles are compatible with bootstrap (`alert alert-success`), but you can also use the BEM syntax (`alert alert--success`).
+
+```js
+md().use(alerts, { bem: true });
+```
+
 ### Syntax
 
 ```
