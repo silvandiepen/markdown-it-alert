@@ -15,7 +15,10 @@ export default function (md: MarkdownIt, options: IMDAlertsOptions) {
 			render: function (tokens, idx) {
 				if (tokens[idx].nesting === 1) {
 					containerOpenCount += 1;
-					return '<div class="alert alert-' + name + '" role="alert">\n';
+					const classes = options.bem
+						? `alert alert--${name}`
+						: `alert alert-${name}`;
+					return `<div class="${classes}" role="alert">\n`;
 				} else {
 					containerOpenCount -= 1;
 					return "</div>\n";
