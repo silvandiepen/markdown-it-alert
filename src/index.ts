@@ -2,10 +2,10 @@
 
 import { Container } from "./container";
 import MarkdownIt from "markdown-it";
-import { IMDAlertsOptions } from "./types";
+import { AlertsOptions } from "./types";
 
-export default function (md: MarkdownIt, options: IMDAlertsOptions) {
-	var containerOpenCount = 0;
+export default function (md: MarkdownIt, options: AlertsOptions) {
+	let containerOpenCount = 0;
 	const links: boolean = options && options.links ? options.links : true;
 	const bem: boolean = options && options.bem ? options.bem : false;
 	const role: boolean = options && options.role ? options.role : true;

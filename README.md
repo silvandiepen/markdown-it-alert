@@ -1,10 +1,19 @@
+---
+projectStyle: /media/custom.css
+---
+
 # Markdown-it Alert
 
 Markdown-it Alert plugin to be able to create alert, success and tip messages in your Markdown code.
 
+::: info
+This is an alert block, with the type info
+:::
+
+
 Compatible with Bootstrap alerts.
 
-### Installation
+## Installation
 
 ```bash
 npm install markdown-it-alert
@@ -19,9 +28,25 @@ import alert from "markdown-it-alert";
 md().use(alert);
 ```
 
-### Options
+## Options
 
-You can use any type of alert you want, proposed is to use the same type for everything; `warning`,`error`,`tip`,`success` or keep the type blank for the default styling of a message.
+You can use any type of alert you want, proposed is to use the same type for everything; `warning`,`error`,`tip`,`success`, or any self determined type.
+
+::: warning
+Warning
+:::
+
+::: error
+Error
+:::
+
+::: tip
+Tip
+:::
+
+::: success
+Success
+:::
 
 #### Links
 
@@ -96,6 +121,10 @@ Gets converted to:
 	<p>Hello world! <a href="#" class="alert-link">Link</a>.</p>
 </div>
 ```
+
+::: success
+Hello world! [Link](#).
+:::
 
 ### Credits
 

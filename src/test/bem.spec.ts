@@ -10,33 +10,33 @@ This is a tip
 `;
 
 describe("BEM", () => {
-	it("Markdown Alert should be rendered with normal syntax", async () => {
-		md.use(alert, { bem: false });
-		try {
-			const renderedDocument = md.render(exampleInput);
-			expect(renderedDocument).toEqual(
-				`<div class="alert alert-tip" role="alert">
+  it("Markdown Alert should be rendered with normal syntax", () => {
+    md.use(alert, { bem: false });
+    try {
+      const renderedDocument = md.render(exampleInput);
+      expect(renderedDocument).toEqual(
+        `<div class="alert alert-tip" role="alert">
 <p>This is a tip</p>
 </div>
 `
-			);
-		} catch (err) {
-			throw Error(err);
-		}
-	});
+      );
+    } catch (err) {
+      throw Error(err);
+    }
+  });
 
-	it("Markdown Alert should be rendered with BEM syntax", async () => {
-		md.use(alert, { bem: true });
-		try {
-			const renderedDocument = md.render(exampleInput);
-			expect(renderedDocument).toEqual(
-				`<div class="alert alert--tip" role="alert">
+  it("Markdown Alert should be rendered with BEM syntax", () => {
+    md.use(alert, { bem: true });
+    try {
+      const renderedDocument = md.render(exampleInput);
+      expect(renderedDocument).toEqual(
+        `<div class="alert alert--tip" role="alert">
 <p>This is a tip</p>
 </div>
 `
-			);
-		} catch (err) {
-			throw Error(err);
-		}
-	});
+      );
+    } catch (err) {
+      throw Error(err);
+    }
+  });
 });
